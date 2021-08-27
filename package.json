@@ -8,6 +8,7 @@
     "serverstart": "DEBUG=express-members-only:* npm run devstart"
   },
   "dependencies": {
+    "async": "^3.2.1",
     "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

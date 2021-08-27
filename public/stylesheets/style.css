@@ -15,6 +15,7 @@
 }
 
 p,
+a,
 div,
 h1,
 h2,
@@ -60,7 +61,6 @@ textarea {
 }
 
 input:focus {
-  background: rgba(0, 0, 0, 0.144);
 }
 
 textarea::placeholder {
@@ -77,9 +77,7 @@ input:focus {
   outline: none;
 }
 
-/*! RESET END */
-
-/*$ Nav */
+/*$ NAV */
 
 nav {
   position: fixed;
@@ -110,6 +108,10 @@ nav {
 .nav__options__item {
   font-family: font;
   cursor: pointer;
+}
+
+.nav__options__item:hover {
+  color: gray;
 }
 
 /*$ Home */
@@ -186,8 +188,12 @@ nav {
   box-shadow: #6e7cff18 0px 15px 54px;
   width: 500px;
   border-radius: 10px;
-  cursor: pointer;
   transition: box-shadow 0.35s;
+}
+
+.home__message__avatar__container {
+  width: 80px;
+  height: 80px;
 }
 
 .home__message__avatar {
@@ -195,6 +201,23 @@ nav {
   width: 80px;
   height: 80px;
   background-image: linear-gradient(120deg, #c484ff 0%, #54aaff 100%);
+  position: absolute;
+  cursor: pointer;
+}
+
+.home__message__avatar--blur {
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  background-image: linear-gradient(120deg, #c484ff 0%, #54aaff 100%);
+  position: absolute;
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.home__message__avatar__container:hover .home__message__avatar--blur {
+  opacity: 0.5;
 }
 
 .home__message__inner {
@@ -223,4 +246,63 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
+  cursor: pointer;
+}
+
+/*! LOGIN PAGE */
+
+.login__container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.login__form__container {
+  width: 500px;
+  height: fit-content;
+  padding: 50px 0;
+  border-radius: 20px;
+  box-shadow: #6e7cff18 0px 15px 54px;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.login__form__header {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.login__input {
+  background-color: transparent;
+  width: 50%;
+  height: 40px;
+}
+
+.login__input::placeholder {
+  font-size: 1.5rem;
+}
+
+.login__form__button {
+  border-radius: 20px;
+  margin: 10px 0;
+  width: fit-content;
+  padding: 6px 21px;
+  float: right;
+  border: none;
+  transition: box-shadow 0.35s;
+}
+
+.login__form__button:hover {
+  box-shadow: 0px 7px 15px 1px rgba(0, 0, 0, 0.15);
 }
