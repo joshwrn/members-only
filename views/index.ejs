@@ -53,38 +53,62 @@
     </a>
     <div class="nav__options">
       <a href='/' class="nav__options__item">Home</a>
-      <a href='/login' class="nav__options__item">Login</a>
-      <a href='/sign-up' class="nav__options__item">Sign Up</a>
+      <% if (user) {%> <a href='/logout' class="nav__options__item">Logout</a>
+        <%} else {%> <a href='/login' class="nav__options__item">Login</a>
+          <a href='/sign-up' class="nav__options__item">Sign Up</a>
+          <%} %>
     </div>
   </nav>
   <div class='home__container'>
-    <% if (user) {%>
-      <h1>WELCOME BACK <%= user.username %>
-      </h1>
-      <a href="/logout">LOG OUT</a>
-      <% } else { %>
-        <h1>please log in</h1>
-        <%}%>
-          <div class="home__new__container">
-            <form action="" class="home__new__form">
-              <textarea placeholder="New Message..." name="" class='home__new__textarea' cols="30" rows="10"></textarea>
-              <button class="home__new__submit" type='submit'>Post</button>
-            </form>
-          </div>
-          <div class="home__message__feed">
-            <div class="home__message__container">
-              <div class="home__message__avatar__container">
-                <div class="home__message__avatar--blur"></div>
-                <div class="home__message__avatar"></div>
-              </div>
-              <div class="home__message__inner">
-                <p class="home__message__text">This is a test message.</p>
-                <div class="home__message__user__container">
-                  <p class="home__message__user">—Josh Warren</p>
-                </div>
+    <div class="home__new__container">
+      <form action="/" method="POST" class="home__new__form">
+        <textarea placeholder="New Message..." name="message" class='home__new__textarea' cols="30"
+          rows="10"></textarea>
+        <button class="home__new__submit" type='submit'>Post</button>
+      </form>
+    </div>
+    <div class="home__message__feed">
+      <% if (user) {%>
+        <% messages.forEach(function(message) { %>
+          <div class="home__message__container">
+            <div class="home__message__avatar__container">
+              <div class="home__message__avatar--blur"></div>
+              <div class="home__message__avatar"></div>
+            </div>
+            <div class="home__message__inner">
+              <p class="home__message__text">
+                <%= message.message %>
+              </p>
+              <div class="home__message__user__container">
+                <p class="home__message__user">
+                  <%= message.user.username %>
+                </p>
               </div>
             </div>
           </div>
+          <% }); %>
+            <% } else { %>
+              <p>not logged in</p>
+              <% messages.forEach(function(message) { %>
+                <div class="home__message__container">
+                  <div class="home__message__avatar__container">
+                    <div class="home__message__avatar--blur"></div>
+                    <div class="home__message__avatar"></div>
+                  </div>
+                  <div class="home__message__inner">
+                    <p class="home__message__text">
+                      <%= message.message %>
+                    </p>
+                    <div class="home__message__user__container">
+                      <p class="home__message__user">
+                        <%= message.user.username %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <% }); %>
+                  <%}%>
+    </div>
   </div>
 </body>
 
