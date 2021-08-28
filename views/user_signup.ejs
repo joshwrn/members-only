@@ -62,16 +62,15 @@
     <!--& Sign Up Page -->
     <div class='login__container'>
         <div class="login__form__container">
-            <form action="POST" class="login__form">
+            <form action="/sign-up" method="POST" class="login__form">
                 <h1 class='login__form__header'>Sign Up</h1>
-                <input placeholder="Username" type="text" class="login__input" />
-                <input placeholder="Password" type="password" class="login__input" />
-                <input placeholder="Confirm Password" type="password" class="login__input" />
+                <input name='username' placeholder="Username" type="text" class="login__input" />
+                <input name='password' placeholder="Password" type="password" class="login__input" />
+                <input name='confirmPassword' placeholder="Confirm Password" type="password" class="login__input" />
                 <button class="login__form__button" type='submit'>Sign Up</button>
             </form>
         </div>
     </div>
-    <p>test</p>
 </body>
 
 </html>

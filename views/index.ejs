@@ -58,26 +58,33 @@
     </div>
   </nav>
   <div class='home__container'>
-    <div class="home__new__container">
-      <form action="" class="home__new__form">
-        <textarea placeholder="New Message..." name="" class='home__new__textarea' cols="30" rows="10"></textarea>
-        <button class="home__new__submit" type='submit'>Post</button>
-      </form>
-    </div>
-    <div class="home__message__feed">
-      <div class="home__message__container">
-        <div class="home__message__avatar__container">
-          <div class="home__message__avatar--blur"></div>
-          <div class="home__message__avatar"></div>
-        </div>
-        <div class="home__message__inner">
-          <p class="home__message__text">This is a test message.</p>
-          <div class="home__message__user__container">
-            <p class="home__message__user">—Josh Warren</p>
+    <% if (user) {%>
+      <h1>WELCOME BACK <%= user.username %>
+      </h1>
+      <a href="/logout">LOG OUT</a>
+      <% } else { %>
+        <h1>please log in</h1>
+        <%}%>
+          <div class="home__new__container">
+            <form action="" class="home__new__form">
+              <textarea placeholder="New Message..." name="" class='home__new__textarea' cols="30" rows="10"></textarea>
+              <button class="home__new__submit" type='submit'>Post</button>
+            </form>
           </div>
-        </div>
-      </div>
-    </div>
+          <div class="home__message__feed">
+            <div class="home__message__container">
+              <div class="home__message__avatar__container">
+                <div class="home__message__avatar--blur"></div>
+                <div class="home__message__avatar"></div>
+              </div>
+              <div class="home__message__inner">
+                <p class="home__message__text">This is a test message.</p>
+                <div class="home__message__user__container">
+                  <p class="home__message__user">—Josh Warren</p>
+                </div>
+              </div>
+            </div>
+          </div>
   </div>
 </body>
 
