@@ -8,10 +8,13 @@ const User = require('../models/userModel');
 //$ get messages for home page
 exports.index = async function (req, res) {
   try {
-    const messages = await Message.find({}).populate('user').exec();
-    // console.log(messages);
-    console.log('user', req.user);
-    res.render('index', { title: 'Home', user: req.user, messages: messages.reverse() });
+    if (req.user) {
+      const messages = await Message.find({}).populate('user').exec();
+      res.render('index', { title: 'Home', user: req.user, messages: messages.reverse() });
+    } else {
+      const messageCount = await Message.countDocuments().exec();
+      res.render('index', { title: 'Home', user: req.user, messageCount: messageCount });
+    }
   } catch (err) {
     console.log(err);
   }
@@ -32,7 +35,7 @@ exports.message_post = [
 
     let userObj = await User.findOne(req.user).exec();
 
-    // Create a Book object with escaped and trimmed data.
+    // Create a message object with escaped and trimmed data.
     const newMessage = new Message({
       message: req.body.message,
       user: userObj,
@@ -43,7 +46,6 @@ exports.message_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/error messages.
 
-      // Get all creators and categories for form.
       async.parallel(function (err, results) {
         if (err) {
           return next(err);

@@ -162,6 +162,10 @@ nav {
   float: right;
   border: none;
   transition: box-shadow 0.35s;
+  background-color: black;
+  font-size: 1.3rem;
+  color: white;
+  cursor: pointer;
 }
 
 .home__new__submit:hover {
